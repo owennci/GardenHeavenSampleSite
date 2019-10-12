@@ -149,6 +149,17 @@ footer {
     width: 75%;
   }
 
+  .body-content .card .fakeimg {
+    float: left;
+    width: 35%;
+    margin-right: 10px;
+  }
+  .body-content .card p:last-child::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   /* Right column */
   aside {
     float: left;
