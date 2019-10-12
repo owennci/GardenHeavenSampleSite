@@ -5,6 +5,7 @@
 
 * {
   box-sizing: border-box;
+  color: #001a00;
 }
 
 body {
@@ -16,7 +17,8 @@ body {
 header {
   padding: 30px;
   text-align: center;
-  background: white;
+  background: url("./headerback.jpg") white;
+  background-size: cover;
 }
 
 h1,
@@ -35,7 +37,7 @@ h2 {
 
 /* Style the top navigation bar */
 nav {
-  background-color: #333;
+  background-color: #032f00;
 }
 
 /* Style the topnav links */
