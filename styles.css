@@ -13,18 +13,24 @@ body {
   background: #f1f1f1;
 }
 
-/* Header/Blog Title */
-header {
-  padding: 30px;
-  text-align: center;
-  background: url("./headerback.jpg") white;
-  background-size: cover;
-}
-
+/* Style large heading types with a thick sans-serif font suitable for windows or mac */
 h1,
 h2,
 h3 {
   font-family: Impact, Charcoal, sans-serif;
+}
+
+/* Header Title */
+header {
+  padding: 30px;
+  text-align: center;
+  background: url("./headerback.jpg") white;
+  background-size: cover; /* cover stretches or shrinks an image without affecting the aspect ratio */
+}
+
+header p {
+  /* this will be invisible except if a dark background image overlaps the text */
+  text-shadow: 0 0 2px #fff;
 }
 
 header h1 {
@@ -40,14 +46,21 @@ nav {
   background-color: #032f00;
 }
 
-/* Style the topnav links */
+/* Style the topnav links
+ * Notice the descendent selector, selecting a link inside a nav element
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
+ */
 nav a {
+  /* Display block so they stack vertically, we override this for desktop */
   display: block;
   color: #f2f2f2;
   background-color: transparent;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  /* transitions can make hover states feel smoother
+   * transition: <property name or all> <duration> <timing curve>
+   */
   transition: all 0.3s ease;
 }
 
@@ -71,7 +84,12 @@ nav a:hover {
   padding: 20px;
   margin: 20px 0;
 }
-.card a {
+.card > a {
+  /* This is important if you don't want all links to be styled like text links
+   * ">" is the direct descendent selecter (using a child combinator), it selects an element only if it is directly nested under another
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
+   */
+
   color: inherit;
   text-decoration: none;
   display: block;
@@ -83,12 +101,16 @@ nav a:hover {
 }
 
 .fakeimg + h5 {
+  /* The "+" here is the sibling selector, it targets an element (h5) next to an element (.fakeimg) 
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator
+   */
   margin-top: 3px;
 }
 
 address {
   margin: 10px 0;
 }
+
 address p {
   margin: 0;
 }
@@ -107,6 +129,21 @@ aside .fakeimg {
 footer {
   margin-top: 20px;
   display: block;
+}
+
+.centred {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.centred label {
+  display: block;
+}
+
+.centred label input,
+.centred label textarea {
+  display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: 1023px) {
@@ -136,6 +173,9 @@ footer {
     float: right;
   }
 
+  /* This cryptic bit of CSS is known as a clearfix, put it on an element when you want
+   * the floats on nested elements to NOT overflow this element.
+   */
   main::after {
     content: "";
     clear: both;
@@ -148,23 +188,25 @@ footer {
     float: left;
     width: 75%;
   }
-
-  .body-content .card .fakeimg {
-    float: left;
-    width: 35%;
-    margin-right: 10px;
-  }
-  .body-content .card p:last-child::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
   /* Right column */
   aside {
     float: left;
     width: 25%;
     background-color: #f1f1f1;
     padding-left: 20px;
+  }
+
+  /* We can also display an image beside text
+   * by using a float and a clearfix
+   */
+  .body-content .card .fakeimg {
+    float: left;
+    width: 200px;
+    margin-right: 10px;
+  }
+  .body-content .card::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
