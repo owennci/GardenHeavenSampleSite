@@ -173,10 +173,6 @@ main {
     margin: 20px;
   }
 
-  nav {
-    overflow: hidden;
-  }
-
   nav a {
     float: left;
   }
@@ -188,6 +184,7 @@ main {
   /* This cryptic bit of CSS is known as a clearfix, put it on an element when you want
    * the floats on nested elements to NOT overflow this element.
    */
+  nav::after,
   main::after {
     content: "";
     clear: both;
