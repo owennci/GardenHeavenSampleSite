@@ -8,9 +8,16 @@
   color: #001a00;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f1f1f1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Style large heading types with a thick sans-serif font suitable for windows or mac */
@@ -127,8 +134,12 @@ aside .fakeimg {
 
 /* Footer */
 footer {
-  margin-top: 20px;
+  margin-top: auto;
   display: block;
+}
+
+main {
+  flex-grow: 1;
 }
 
 .centred {
@@ -138,6 +149,7 @@ footer {
 
 .centred label {
   display: block;
+  margin-bottom: 20px;
 }
 
 .centred label input,
